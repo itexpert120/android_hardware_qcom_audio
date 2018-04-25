@@ -83,14 +83,12 @@ int msim_voice_extn_set_parameters(struct audio_device *adev __unused,
                                   struct str_parms *parms)
 {
     int ret;
-
     char value[32] = {0};
 
     ret = str_parms_get_str(parms, AUDIO_PARAMETER_KEY_PHONETYPE, value,
                             sizeof(value));
     if (ret >= 0) {
-        msim_phone = property_get_int32(!strcmp(value, AUDIO_PARAMETER_VALUE_CP2) ?
-                AUDIO_PROPERTY_SEC_VSID2 : AUDIO_PROPERTY_SEC_VSID1) != 0 ? MSIM_SIM2 : MSIM_SIM1;
+        msim_phone = !strcmp(value, AUDIO_PARAMETER_VALUE_CP2) ? MSIM_SIM2 : MSIM_SIM1;
         ALOGV("%s: msim_phone=%d", __func__, msim_phone);
     }
 
