@@ -1,5 +1,12 @@
 LOCAL_PATH:= $(call my-dir)
 
+qcom_post_proc_common_cflags := \
+    -O2 -fvisibility=hidden \
+    -Wall -Werror \
+    -Wno-unused-function \
+    -Wno-unused-variable \
+    -Wno-sign-compare -Wno-format
+
 include $(CLEAR_VARS)
 
 ifneq ($(strip $(AUDIO_FEATURE_ENABLED_PROXY_DEVICE)),false)
