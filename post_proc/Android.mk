@@ -32,7 +32,7 @@ ifeq ($(strip $(AUDIO_FEATURE_ENABLED_AUDIOSPHERE)),true)
     LOCAL_SRC_FILES += asphere.c
 endif
 
-LOCAL_CFLAGS+= -O2 -fvisibility=hidden
+LOCAL_CFLAGS += $(qcom_post_proc_common_cflags)
 
 ifeq ($(strip $(AUDIO_FEATURE_ENABLED_DTS_EAGLE)), true)
     LOCAL_CFLAGS += -DDTS_EAGLE
@@ -77,7 +77,7 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_CFLAGS += -O2 -fvisibility=hidden
+LOCAL_CFLAGS += $(qcom_post_proc_common_cflags)
 
 ifeq ($(strip $(AUDIO_FEATURE_ENABLED_DTS_EAGLE)), true)
 LOCAL_CFLAGS += -DHW_ACC_HPX
