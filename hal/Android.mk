@@ -50,6 +50,9 @@ LOCAL_SRC_FILES := \
 
 LOCAL_SRC_FILES += audio_extn/audio_extn.c \
                    audio_extn/utils.c
+
+LOCAL_SRC_FILES += voice_extn/msim_voice_extn.c
+
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 LOCAL_CFLAGS += -DUSE_VENDOR_EXTN
@@ -127,14 +130,6 @@ endif
 ifneq ($(strip $(AUDIO_FEATURE_ENABLED_COMPRESS_VOIP)),false)
     LOCAL_CFLAGS += -DCOMPRESS_VOIP_ENABLED
     LOCAL_SRC_FILES += voice_extn/compress_voip.c
-endif
-ifeq ($(strip $(AUDIO_FEATURE_HTC_DUAL_SIM)),true)
-    LOCAL_CFLAGS += -DHTC_DUAL_SIM
-    LOCAL_SRC_FILES += voice_extn/msim_voice_extn.c
-endif
-ifeq ($(strip $(AUDIO_FEATURE_SAMSUNG_DUAL_SIM)),true)
-    LOCAL_CFLAGS += -DSAMSUNG_DUAL_SIM
-    LOCAL_SRC_FILES += voice_extn/msim_voice_extn.c
 endif
 endif
 
